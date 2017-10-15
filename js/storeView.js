@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends Component {
+class StoreView extends Component {
   render(){
     return (
       <div>
-        <p>This is a React App.</p>
+        <p>This is a store view.</p>
       </div>
     );
   }
 }
 
-export default App;
+export default StoreView;
