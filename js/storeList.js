@@ -4,13 +4,28 @@ import StoreCard from './storeCard.js';
 import './storeList.css';
 
 class StoreList extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  renderStores = () => {
+    const stores = this.props.stores;
+    console.log(stores);
+
+    return Object.keys(stores).map((storeIndex) => {
+      return(
+        <StoreCard
+          key={storeIndex}
+          {...stores[storeIndex]}
+        />
+      )
+    })
+  }
+
   render(){
     return (
       <div className="store-list">
-        <StoreCard />
-        <StoreCard />
-        <StoreCard />
-        <StoreCard />
+        {this.renderStores()}
       </div>
     );
   }
