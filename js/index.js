@@ -4,6 +4,7 @@ import HomePage from './home.js';
 import StoreView from './storeView.js';
 import NotFound from './notFound.js';
 import { render } from 'react-dom';
+// import css from './storeCard.css';
 // import { Router, Route, Switch } from 'react-router';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
