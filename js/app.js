@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import StoreList from './storeList.js';
 import sampleStores from './sampleStores.js';
 import Navbar from './navbar.js';
+import './css/app.css';
 
 class App extends Component {
   constructor(props){
@@ -25,7 +26,7 @@ class App extends Component {
 
   render(){
     return (
-      <div>
+      <div className="application-wrapper">
         <Navbar />
         <StoreList
           stores={this.state.stores}

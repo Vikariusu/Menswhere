@@ -4,8 +4,8 @@ import './css/navbar.css';
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      Navbar here.
+    <div className="navbar-top">
+      <div className="logo">Menswhere</div>
     </div>
   )
 }

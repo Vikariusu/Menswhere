@@ -1,6 +1,7 @@
-.navbar {
+.navbar-top {
   display: flex;
-  background-color: red;
+  background-color: #b75757;
   align-items: center;
   height: 65px;
+
 }
