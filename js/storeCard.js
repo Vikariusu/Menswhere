@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom';
 import './css/storeCard.css';
 
 class StoreCard extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      likesCount: 0,
+      liked: false
+    }
+  }
+
   // handleClick = () => {
   //   this.props.likesCount + 1;
   // }
 
+  toggleLike = () => {
+    this.setState({likesCount: this.state.likesCount + 1});
+  }
+
   render(){
     var cover = {
-      // backgroundImage: "url(" + this.props.img + ")"
       backgroundImage: `url(${this.props.image})`,
       height: "200px",
       backgroundSize: "cover",
@@ -17,24 +28,28 @@ class StoreCard extends Component {
       backgroundRepeat: "no-repeat"
     };
 
+    const cardLink = `/store/${this.props.index}`
+
     return(
       <div className="card">
         <div className="card-content">
-          <div className="card-img-wrapper" style={cover} />
-          <h2>{this.props.name}</h2>
-          <h5>{this.props.address}</h5>
-          <p className="desc">{this.props.desc}</p>
+          <a href={cardLink}>
+            <div className="card-top">
+              <div className="card-img-wrapper" style={cover}></div>
+              <h2>{this.props.name}</h2>
+              <h5>{this.props.address}</h5>
+              <p className="desc">{this.props.desc}</p>
+            </div>
+          </a>
           <div className="card-social">
             <div className="card-social-inner">
               <div className="likes">
-                <i className="fa fa-heart-o" aria-hidden="true"></i> likes
+                <i className="fa fa-heart-o" aria-hidden="true" onClick={this.toggleLike}></i>{this.state.likesCount} likes
               </div>
               <div className="comments">
                 <i className="fa fa-comment-o" aria-hidden="true"></i> comments
               </div>
             </div>
-            {/* <button onClick={this.props.handleLikesChange}>{this.props.likesCount}</button> */}
-            {/* {this.props.commentsCount} */}
           </div>
         </div>
       </div>

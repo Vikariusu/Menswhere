@@ -9,12 +9,24 @@
   transition: all .3s ease;
 }
 
+.card a {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+.card a:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
 .card-content {
   padding: 30px 30px 110px;
 }
 
 .card-content h2, .card-content h5 {
-  line-height: 1.4;
+  line-height: 1.2;
   color: #444444;
 }
 

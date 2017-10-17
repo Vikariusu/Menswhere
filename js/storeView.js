@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './css/storeview.css';
 
 class StoreView extends Component {
   render(){

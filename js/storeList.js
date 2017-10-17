@@ -17,8 +17,7 @@ class StoreList extends Component {
         <StoreCard
           key={storeIndex}
           {...stores[storeIndex]}
-          likesCount={this.props.likesCount}
-          commentsCount={this.props.commentsCount}
+          index={storeIndex}
           handleLikesChange={this.props.handleLikesChange}
         />
       )

@@ -11665,8 +11665,7 @@ var StoreList = function (_Component) {
         return _react2.default.createElement(_storeCard2.default, _extends({
           key: storeIndex
         }, stores[storeIndex], {
-          likesCount: _this.props.likesCount,
-          commentsCount: _this.props.commentsCount,
+          index: storeIndex,
           handleLikesChange: _this.props.handleLikesChange
         }));
       });
@@ -11725,22 +11724,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var StoreCard = function (_Component) {
   _inherits(StoreCard, _Component);
 
-  function StoreCard() {
+  function StoreCard(props) {
     _classCallCheck(this, StoreCard);
 
-    return _possibleConstructorReturn(this, (StoreCard.__proto__ || Object.getPrototypeOf(StoreCard)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (StoreCard.__proto__ || Object.getPrototypeOf(StoreCard)).call(this, props));
+
+    _this.toggleLike = function () {
+      _this.setState({ likesCount: _this.state.likesCount + 1 });
+    };
+
+    _this.state = {
+      likesCount: 0,
+      liked: false
+    };
+    return _this;
   }
+
+  // handleClick = () => {
+  //   this.props.likesCount + 1;
+  // }
 
   _createClass(StoreCard, [{
     key: 'render',
-
-    // handleClick = () => {
-    //   this.props.likesCount + 1;
-    // }
-
     value: function render() {
       var cover = {
-        // backgroundImage: "url(" + this.props.img + ")"
         backgroundImage: 'url(' + this.props.image + ')',
         height: "200px",
         backgroundSize: "cover",
@@ -11748,27 +11755,37 @@ var StoreCard = function (_Component) {
         backgroundRepeat: "no-repeat"
       };
 
+      var cardLink = '/store/' + this.props.index;
+
       return _react2.default.createElement(
         'div',
         { className: 'card' },
         _react2.default.createElement(
           'div',
           { className: 'card-content' },
-          _react2.default.createElement('div', { className: 'card-img-wrapper', style: cover }),
           _react2.default.createElement(
-            'h2',
-            null,
-            this.props.name
-          ),
-          _react2.default.createElement(
-            'h5',
-            null,
-            this.props.address
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'desc' },
-            this.props.desc
+            'a',
+            { href: cardLink },
+            _react2.default.createElement(
+              'div',
+              { className: 'card-top' },
+              _react2.default.createElement('div', { className: 'card-img-wrapper', style: cover }),
+              _react2.default.createElement(
+                'h2',
+                null,
+                this.props.name
+              ),
+              _react2.default.createElement(
+                'h5',
+                null,
+                this.props.address
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'desc' },
+                this.props.desc
+              )
+            )
           ),
           _react2.default.createElement(
             'div',
@@ -11779,7 +11796,8 @@ var StoreCard = function (_Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'likes' },
-                _react2.default.createElement('i', { className: 'fa fa-heart-o', 'aria-hidden': 'true' }),
+                _react2.default.createElement('i', { className: 'fa fa-heart-o', 'aria-hidden': 'true', onClick: this.toggleLike }),
+                this.state.likesCount,
                 ' likes'
               ),
               _react2.default.createElement(
@@ -11840,7 +11858,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.4;\n  color: #444444;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -12274,6 +12292,8 @@ var _react2 = _interopRequireDefault(_react);
 var _reactDom = __webpack_require__(6);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+__webpack_require__(98);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15889,6 +15909,51 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
     return targetComponent;
 };
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(99);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(10)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./storeview.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./storeview.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
