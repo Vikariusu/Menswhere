@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import StoreCard from './storeCard.js';
-import './storeList.css';
+import './css/storeList.css';
 
 class StoreList extends Component {
   constructor(props) {
@@ -10,13 +10,16 @@ class StoreList extends Component {
 
   renderStores = () => {
     const stores = this.props.stores;
-    console.log(stores);
+    // console.log(stores);
 
     return Object.keys(stores).map((storeIndex) => {
       return(
         <StoreCard
           key={storeIndex}
           {...stores[storeIndex]}
+          likesCount={this.props.likesCount}
+          commentsCount={this.props.commentsCount}
+          handleLikesChange={this.props.handleLikesChange}
         />
       )
     })

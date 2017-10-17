@@ -1472,7 +1472,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _pathToRegexp = __webpack_require__(73);
+var _pathToRegexp = __webpack_require__(74);
 
 var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
@@ -2985,21 +2985,21 @@ var _app = __webpack_require__(40);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _home = __webpack_require__(61);
+var _home = __webpack_require__(62);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _storeView = __webpack_require__(62);
+var _storeView = __webpack_require__(63);
 
 var _storeView2 = _interopRequireDefault(_storeView);
 
-var _notFound = __webpack_require__(63);
+var _notFound = __webpack_require__(64);
 
 var _notFound2 = _interopRequireDefault(_notFound);
 
 var _reactDom = __webpack_require__(7);
 
-var _reactRouterDom = __webpack_require__(64);
+var _reactRouterDom = __webpack_require__(65);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3017,7 +3017,6 @@ var Root = function Root() {
     )
   );
 };
-// import css from './storeCard.css';
 // import { Router, Route, Switch } from 'react-router';
 
 
@@ -4881,9 +4880,13 @@ var _storeList = __webpack_require__(53);
 
 var _storeList2 = _interopRequireDefault(_storeList);
 
-var _sampleStores = __webpack_require__(60);
+var _sampleStores = __webpack_require__(58);
 
 var _sampleStores2 = _interopRequireDefault(_sampleStores);
+
+var _navbar = __webpack_require__(59);
+
+var _navbar2 = _interopRequireDefault(_navbar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4903,9 +4906,15 @@ var App = function (_Component) {
 
     _this.state = {
       stores: {}
+      // likesCount: 0,
+      // commentsCount: 0
     };
     return _this;
   }
+
+  // handleLikesChange = () => {
+  //   this.setState({ likesCount: this.state.likesCount + 1});
+  // }
 
   _createClass(App, [{
     key: 'componentDidMount',
@@ -4918,13 +4927,12 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          'p',
-          null,
-          'This is a React App.'
-        ),
+        _react2.default.createElement(_navbar2.default, null),
         _react2.default.createElement(_storeList2.default, {
-          stores: this.state.stores
+          stores: this.state.stores,
+          likesCount: this.state.likesCount,
+          commentsCount: this.state.commentsCount,
+          handleLikesChange: this.handleLikesChange
         })
       );
     }
@@ -11629,7 +11637,7 @@ var _storeCard = __webpack_require__(54);
 
 var _storeCard2 = _interopRequireDefault(_storeCard);
 
-__webpack_require__(58);
+__webpack_require__(94);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11649,12 +11657,16 @@ var StoreList = function (_Component) {
 
     _this.renderStores = function () {
       var stores = _this.props.stores;
-      console.log(stores);
+      // console.log(stores);
 
       return Object.keys(stores).map(function (storeIndex) {
         return _react2.default.createElement(_storeCard2.default, _extends({
           key: storeIndex
-        }, stores[storeIndex]));
+        }, stores[storeIndex], {
+          likesCount: _this.props.likesCount,
+          commentsCount: _this.props.commentsCount,
+          handleLikesChange: _this.props.handleLikesChange
+        }));
       });
     };
 
@@ -11698,7 +11710,7 @@ var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(55);
+__webpack_require__(92);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11719,38 +11731,62 @@ var StoreCard = function (_Component) {
 
   _createClass(StoreCard, [{
     key: 'render',
+
+    // handleClick = () => {
+    //   this.props.likesCount + 1;
+    // }
+
     value: function render() {
+      var cover = {
+        // backgroundImage: "url(" + this.props.img + ")"
+        backgroundImage: 'url(' + this.props.image + ')',
+        height: "200px",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      };
+
       return _react2.default.createElement(
         'div',
         { className: 'card' },
-        _react2.default.createElement('div', { className: 'card-img' }),
-        _react2.default.createElement(
-          'h2',
-          null,
-          'Store Name'
-        ),
-        _react2.default.createElement(
-          'h5',
-          null,
-          'Address'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Description'
-        ),
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'card-content' },
+          _react2.default.createElement('div', { className: 'card-img-wrapper', style: cover }),
           _react2.default.createElement(
-            'p',
+            'h2',
             null,
-            'comments'
+            this.props.name
+          ),
+          _react2.default.createElement(
+            'h5',
+            null,
+            this.props.address
           ),
           _react2.default.createElement(
             'p',
-            null,
-            'likes'
+            { className: 'desc' },
+            this.props.desc
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'card-social' },
+            _react2.default.createElement(
+              'div',
+              { className: 'card-social-inner' },
+              _react2.default.createElement(
+                'div',
+                { className: 'likes' },
+                _react2.default.createElement('i', { className: 'fa fa-heart-o', 'aria-hidden': 'true' }),
+                ' likes'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'comments' },
+                _react2.default.createElement('i', { className: 'fa fa-comment-o', 'aria-hidden': 'true' }),
+                ' comments'
+              )
+            )
           )
         )
       );
@@ -11763,51 +11799,8 @@ var StoreCard = function (_Component) {
 exports.default = StoreCard;
 
 /***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(56);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(29)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!./storeCard.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!./storeCard.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(28)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 55 */,
+/* 56 */,
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11906,51 +11899,6 @@ module.exports = function (css) {
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(59);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(29)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!./storeList.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!./storeList.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(28)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".store-list {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -11985,7 +11933,85 @@ module.exports = {
 };
 
 /***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(7);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+__webpack_require__(60);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navbar = function Navbar() {
+  return _react2.default.createElement(
+    'div',
+    { className: 'navbar' },
+    'Navbar here.'
+  );
+};
+
+exports.default = Navbar;
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(61);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(29)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./navbar.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./navbar.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(28)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".navbar {\n  display: flex;\n  background-color: red;\n  align-items: center;\n  height: 65px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12016,7 +12042,7 @@ var HomePage = function HomePage() {
 exports.default = HomePage;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12074,7 +12100,7 @@ var StoreView = function (_Component) {
 exports.default = StoreView;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12105,7 +12131,7 @@ var NotFound = function NotFound() {
 exports.default = NotFound;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12116,11 +12142,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.withRouter = exports.matchPath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.NavLink = exports.MemoryRouter = exports.Link = exports.HashRouter = exports.BrowserRouter = undefined;
 
-var _BrowserRouter2 = __webpack_require__(65);
+var _BrowserRouter2 = __webpack_require__(66);
 
 var _BrowserRouter3 = _interopRequireDefault(_BrowserRouter2);
 
-var _HashRouter2 = __webpack_require__(67);
+var _HashRouter2 = __webpack_require__(68);
 
 var _HashRouter3 = _interopRequireDefault(_HashRouter2);
 
@@ -12128,19 +12154,19 @@ var _Link2 = __webpack_require__(33);
 
 var _Link3 = _interopRequireDefault(_Link2);
 
-var _MemoryRouter2 = __webpack_require__(69);
+var _MemoryRouter2 = __webpack_require__(70);
 
 var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
 
-var _NavLink2 = __webpack_require__(72);
+var _NavLink2 = __webpack_require__(73);
 
 var _NavLink3 = _interopRequireDefault(_NavLink2);
 
-var _Prompt2 = __webpack_require__(75);
+var _Prompt2 = __webpack_require__(76);
 
 var _Prompt3 = _interopRequireDefault(_Prompt2);
 
-var _Redirect2 = __webpack_require__(77);
+var _Redirect2 = __webpack_require__(78);
 
 var _Redirect3 = _interopRequireDefault(_Redirect2);
 
@@ -12152,19 +12178,19 @@ var _Router2 = __webpack_require__(19);
 
 var _Router3 = _interopRequireDefault(_Router2);
 
-var _StaticRouter2 = __webpack_require__(83);
+var _StaticRouter2 = __webpack_require__(84);
 
 var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
 
-var _Switch2 = __webpack_require__(85);
+var _Switch2 = __webpack_require__(86);
 
 var _Switch3 = _interopRequireDefault(_Switch2);
 
-var _matchPath2 = __webpack_require__(87);
+var _matchPath2 = __webpack_require__(88);
 
 var _matchPath3 = _interopRequireDefault(_matchPath2);
 
-var _withRouter2 = __webpack_require__(88);
+var _withRouter2 = __webpack_require__(89);
 
 var _withRouter3 = _interopRequireDefault(_withRouter2);
 
@@ -12185,7 +12211,7 @@ exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12209,7 +12235,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createBrowserHistory = __webpack_require__(66);
+var _createBrowserHistory = __webpack_require__(67);
 
 var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
@@ -12278,7 +12304,7 @@ BrowserRouter.propTypes = {
 exports.default = BrowserRouter;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12604,7 +12630,7 @@ var createBrowserHistory = function createBrowserHistory() {
 exports.default = createBrowserHistory;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12628,7 +12654,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createHashHistory = __webpack_require__(68);
+var _createHashHistory = __webpack_require__(69);
 
 var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
@@ -12696,7 +12722,7 @@ HashRouter.propTypes = {
 exports.default = HashRouter;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13035,7 +13061,7 @@ var createHashHistory = function createHashHistory() {
 exports.default = createHashHistory;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13045,7 +13071,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _MemoryRouter = __webpack_require__(70);
+var _MemoryRouter = __webpack_require__(71);
 
 var _MemoryRouter2 = _interopRequireDefault(_MemoryRouter);
 
@@ -13054,7 +13080,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _MemoryRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13078,7 +13104,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createMemoryHistory = __webpack_require__(71);
+var _createMemoryHistory = __webpack_require__(72);
 
 var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 
@@ -13147,7 +13173,7 @@ MemoryRouter.propTypes = {
 exports.default = MemoryRouter;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13338,7 +13364,7 @@ var createMemoryHistory = function createMemoryHistory() {
 exports.default = createMemoryHistory;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13450,7 +13476,7 @@ NavLink.defaultProps = {
 exports.default = NavLink;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13458,7 +13484,7 @@ exports.default = NavLink;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isarray = __webpack_require__(74);
+var isarray = __webpack_require__(75);
 
 /**
  * Expose `pathToRegexp`.
@@ -13885,7 +13911,7 @@ function pathToRegexp(path, keys, options) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13896,7 +13922,7 @@ module.exports = Array.isArray || function (arr) {
 };
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13906,7 +13932,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Prompt = __webpack_require__(76);
+var _Prompt = __webpack_require__(77);
 
 var _Prompt2 = _interopRequireDefault(_Prompt);
 
@@ -13915,7 +13941,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _Prompt2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14029,7 +14055,7 @@ Prompt.contextTypes = {
 exports.default = Prompt;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14039,7 +14065,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Redirect = __webpack_require__(78);
+var _Redirect = __webpack_require__(79);
 
 var _Redirect2 = _interopRequireDefault(_Redirect);
 
@@ -14048,7 +14074,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _Redirect2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14076,7 +14102,7 @@ var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _history = __webpack_require__(79);
+var _history = __webpack_require__(80);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14179,7 +14205,7 @@ Redirect.contextTypes = {
 exports.default = Redirect;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14220,15 +14246,15 @@ Object.defineProperty(exports, 'createPath', {
   }
 });
 
-var _createBrowserHistory2 = __webpack_require__(80);
+var _createBrowserHistory2 = __webpack_require__(81);
 
 var _createBrowserHistory3 = _interopRequireDefault(_createBrowserHistory2);
 
-var _createHashHistory2 = __webpack_require__(81);
+var _createHashHistory2 = __webpack_require__(82);
 
 var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
 
-var _createMemoryHistory2 = __webpack_require__(82);
+var _createMemoryHistory2 = __webpack_require__(83);
 
 var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
@@ -14239,7 +14265,7 @@ exports.createHashHistory = _createHashHistory3.default;
 exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14565,7 +14591,7 @@ var createBrowserHistory = function createBrowserHistory() {
 exports.default = createBrowserHistory;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14904,7 +14930,7 @@ var createHashHistory = function createHashHistory() {
 exports.default = createHashHistory;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15095,7 +15121,7 @@ var createMemoryHistory = function createMemoryHistory() {
 exports.default = createMemoryHistory;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15105,7 +15131,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _StaticRouter = __webpack_require__(84);
+var _StaticRouter = __webpack_require__(85);
 
 var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
 
@@ -15114,7 +15140,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _StaticRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15333,7 +15359,7 @@ StaticRouter.childContextTypes = {
 exports.default = StaticRouter;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15343,7 +15369,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Switch = __webpack_require__(86);
+var _Switch = __webpack_require__(87);
 
 var _Switch2 = _interopRequireDefault(_Switch);
 
@@ -15352,7 +15378,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _Switch2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15472,7 +15498,7 @@ Switch.propTypes = {
 exports.default = Switch;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15491,7 +15517,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15501,7 +15527,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _withRouter = __webpack_require__(89);
+var _withRouter = __webpack_require__(90);
 
 var _withRouter2 = _interopRequireDefault(_withRouter);
 
@@ -15510,7 +15536,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _withRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15528,7 +15554,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _hoistNonReactStatics = __webpack_require__(90);
+var _hoistNonReactStatics = __webpack_require__(91);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -15579,7 +15605,7 @@ var withRouter = function withRouter(Component) {
 exports.default = withRouter;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15650,6 +15676,96 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
     return targetComponent;
 };
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(93);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(29)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./storeCard.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./storeCard.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(28)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.4;\n  color: #444444;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(95);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(29)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./storeList.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./storeList.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(28)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".store-list {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
