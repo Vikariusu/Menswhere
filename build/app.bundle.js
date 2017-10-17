@@ -11733,12 +11733,14 @@ var StoreCard = function (_Component) {
       if (_this.state.liked === false) {
         _this.setState({ liked: true });
         _this.setState({ likesCount: _this.state.likesCount + 1 });
+        _this.setState({ likedClass: 'fa fa-heart' });
       }
     };
 
     _this.state = {
       likesCount: 0,
-      liked: false
+      liked: false,
+      likedClass: 'fa fa-heart-o'
     };
     return _this;
   }
@@ -11795,7 +11797,7 @@ var StoreCard = function (_Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'likes' },
-                _react2.default.createElement('i', { className: 'fa fa-heart-o', 'aria-hidden': 'true', onClick: this.toggleLike }),
+                _react2.default.createElement('i', { className: this.state.likedClass, 'aria-hidden': 'true', onClick: this.toggleLike }),
                 this.state.likesCount,
                 ' likes'
               ),
@@ -11857,7 +11859,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n  margin-top: 8px;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n  margin-top: 8px;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n\n.likes i {\n  color: red;\n}\n", ""]);
 
 // exports
 

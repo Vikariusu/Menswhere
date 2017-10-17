@@ -7,7 +7,8 @@ class StoreCard extends Component {
     super(props);
     this.state = {
       likesCount: 0,
-      liked: false
+      liked: false,
+      likedClass: 'fa fa-heart-o'
     }
   }
 
@@ -15,6 +16,7 @@ class StoreCard extends Component {
     if(this.state.liked === false) {
       this.setState({liked: true});
       this.setState({likesCount: this.state.likesCount + 1});
+      this.setState({likedClass: 'fa fa-heart'});
     }
   }
 
@@ -43,7 +45,7 @@ class StoreCard extends Component {
           <div className="card-social">
             <div className="card-social-inner">
               <div className="likes">
-                <i className="fa fa-heart-o" aria-hidden="true" onClick={this.toggleLike}></i>{this.state.likesCount} likes
+                <i className={this.state.likedClass} aria-hidden="true" onClick={this.toggleLike}></i>{this.state.likesCount} likes
               </div>
               <div className="comments">
                 <i className="fa fa-comment-o" aria-hidden="true"></i> comments
