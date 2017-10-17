@@ -11,12 +11,11 @@ class StoreCard extends Component {
     }
   }
 
-  // handleClick = () => {
-  //   this.props.likesCount + 1;
-  // }
-
   toggleLike = () => {
-    this.setState({likesCount: this.state.likesCount + 1});
+    if(this.state.liked === false) {
+      this.setState({liked: true});
+      this.setState({likesCount: this.state.likesCount + 1});
+    }
   }
 
   render(){
@@ -28,7 +27,7 @@ class StoreCard extends Component {
       backgroundRepeat: "no-repeat"
     };
 
-    const cardLink = `/store/${this.props.index}`
+    const cardLink = `/city/amsterdam/store/${this.props.index}`
 
     return(
       <div className="card">
@@ -37,7 +36,7 @@ class StoreCard extends Component {
             <div className="card-top">
               <div className="card-img-wrapper" style={cover}></div>
               <h2>{this.props.name}</h2>
-              <h5>{this.props.address}</h5>
+              <p>{this.props.address}</p>
               <p className="desc">{this.props.desc}</p>
             </div>
           </a>

@@ -28,6 +28,7 @@
 .card-content h2, .card-content h5 {
   line-height: 1.2;
   color: #444444;
+  margin-top: 8px;
 }
 
 .card-social {

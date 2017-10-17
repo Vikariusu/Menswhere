@@ -11730,7 +11730,10 @@ var StoreCard = function (_Component) {
     var _this = _possibleConstructorReturn(this, (StoreCard.__proto__ || Object.getPrototypeOf(StoreCard)).call(this, props));
 
     _this.toggleLike = function () {
-      _this.setState({ likesCount: _this.state.likesCount + 1 });
+      if (_this.state.liked === false) {
+        _this.setState({ liked: true });
+        _this.setState({ likesCount: _this.state.likesCount + 1 });
+      }
     };
 
     _this.state = {
@@ -11739,10 +11742,6 @@ var StoreCard = function (_Component) {
     };
     return _this;
   }
-
-  // handleClick = () => {
-  //   this.props.likesCount + 1;
-  // }
 
   _createClass(StoreCard, [{
     key: 'render',
@@ -11755,7 +11754,7 @@ var StoreCard = function (_Component) {
         backgroundRepeat: "no-repeat"
       };
 
-      var cardLink = '/store/' + this.props.index;
+      var cardLink = '/city/amsterdam/store/' + this.props.index;
 
       return _react2.default.createElement(
         'div',
@@ -11776,7 +11775,7 @@ var StoreCard = function (_Component) {
                 this.props.name
               ),
               _react2.default.createElement(
-                'h5',
+                'p',
                 null,
                 this.props.address
               ),
@@ -11858,7 +11857,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n  margin-top: 8px;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -12281,7 +12280,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 50%), url(\"https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?dpr=1&auto=format&fit=crop&w=1500&h=&q=60&cs=tinysrgb&crop=\");\n}\n\n.banner-wrapper {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.logo-home {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  font-size: 56px;\n  padding: 15px;\n  letter-spacing: 1.9px;\n}\n\n.banner-content {\n  color: #e9ecec;\n  font-size: 25px;\n}\n", ""]);
+exports.push([module.i, ".banner-wrapper {\n  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 50%), url(\"https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?dpr=1&auto=format&fit=crop&w=1500&h=&q=60&cs=tinysrgb&crop=\");\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.logo-home {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  font-size: 56px;\n  padding: 15px;\n  letter-spacing: 1.9px;\n}\n\n.banner-content {\n  color: #e9ecec;\n  font-size: 25px;\n}\n", ""]);
 
 // exports
 
