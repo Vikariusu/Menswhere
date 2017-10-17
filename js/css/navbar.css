@@ -1,7 +1,33 @@
 .navbar-top {
   display: flex;
-  background-color: #b75757;
+  background-color: #44505d;
   align-items: center;
   height: 65px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
 
+.logo {
+  color: #f6f7f7;
+  text-transform: uppercase;
+  padding-left: 15px;
+}
+
+.navbar-links {
+  padding-right: 15px;
+  color: #44505d;
+}
+
+.navbar-links a {
+  padding: 10px;
+  text-decoration: inherit;
+  cursor: auto;
+  color: #f6f7f7;
+}
+
+.navbar-links a:visited {
+  text-decoration: inherit;
+  color: #f6f7f7;
+  cursor: auto;
 }

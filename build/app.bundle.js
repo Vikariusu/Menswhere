@@ -12071,6 +12071,20 @@ var Navbar = function Navbar() {
       'div',
       { className: 'logo' },
       'Menswhere'
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'navbar-links' },
+      _react2.default.createElement(
+        'a',
+        { href: '#' },
+        'About'
+      ),
+      _react2.default.createElement(
+        'a',
+        { href: '#' },
+        'Contact'
+      )
     )
   );
 };
@@ -12117,7 +12131,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #b75757;\n  align-items: center;\n  height: 65px;\n\n}\n", ""]);
+exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #44505d;\n  align-items: center;\n  height: 65px;\n  justify-content: space-between;\n  margin-bottom: 20px;\n  align-items: center;\n}\n\n.logo {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  padding-left: 15px;\n}\n\n.navbar-links {\n  padding-right: 15px;\n  color: #44505d;\n}\n\n.navbar-links a {\n  padding: 10px;\n  text-decoration: inherit;\n  cursor: auto;\n  color: #f6f7f7;\n}\n\n.navbar-links a:visited {\n  text-decoration: inherit;\n  color: #f6f7f7;\n  cursor: auto;\n}\n", ""]);
 
 // exports
 
@@ -12317,7 +12331,7 @@ var StoreView = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'storeview-wrapper' },
         _react2.default.createElement(
           'p',
           null,
@@ -15950,7 +15964,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".storeview-wrapper {\n  background-color: white !important;\n}\n", ""]);
 
 // exports
 

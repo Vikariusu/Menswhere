@@ -5,7 +5,7 @@ import './css/storeview.css';
 class StoreView extends Component {
   render(){
     return (
-      <div>
+      <div className="storeview-wrapper">
         <p>This is a store view.</p>
       </div>
     );
