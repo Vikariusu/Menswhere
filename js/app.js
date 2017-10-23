@@ -31,7 +31,6 @@ class App extends Component {
         <StoreList
           stores={this.state.stores}
           likesCount={this.state.likesCount}
-          commentsCount={this.state.commentsCount}
           handleLikesChange={this.handleLikesChange}
         />
       </div>

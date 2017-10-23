@@ -17,6 +17,10 @@ class StoreCard extends Component {
       this.setState({liked: true});
       this.setState({likesCount: this.state.likesCount + 1});
       this.setState({likedClass: 'fa fa-heart'});
+    } else {
+      this.setState({liked: false});
+      this.setState({likesCount: this.state.likesCount - 1});
+      this.setState({likedClass: 'fa fa-heart-o'});
     }
   }
 
@@ -45,7 +49,7 @@ class StoreCard extends Component {
           <div className="card-social">
             <div className="card-social-inner">
               <div className="likes">
-                <i className={this.state.likedClass} aria-hidden="true" onClick={this.toggleLike}></i>{this.state.likesCount} likes
+                <i className={this.state.likedClass} aria-hidden="true" onClick={this.toggleLike}></i> {this.state.likesCount}
               </div>
               <div className="comments">
                 <i className="fa fa-comment-o" aria-hidden="true"></i> comments

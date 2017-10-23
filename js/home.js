@@ -14,6 +14,7 @@ const HomePage = () => {
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a className="dropdown-item" href="/city/Amsterdam">Amsterdam</a>
+                <a className="dropdown-item" href="/city/London">London</a>
               </div>
             </div>
         </div>
