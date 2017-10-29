@@ -43,7 +43,7 @@ class StoreCard extends Component {
               <div className="card-img-wrapper" style={cover}></div>
               <h2>{this.props.name}</h2>
               <p>{this.props.address}</p>
-              <p className="desc">{this.props.desc}</p>
+              <p className="desc">{this.props.description}</p>
             </div>
           </a>
           <div className="card-social">

@@ -10,13 +10,12 @@ class StoreList extends Component {
 
   renderStores = () => {
     const stores = this.props.stores;
-    // console.log(stores);
 
-    return Object.keys(stores).map((storeIndex) => {
+    return stores.map((store, storeIndex) => {
       return(
         <StoreCard
-          key={storeIndex}
-          {...stores[storeIndex]}
+          key={store._id}
+          {...store}
           index={storeIndex}
           handleLikesChange={this.props.handleLikesChange}
         />
