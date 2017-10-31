@@ -33,7 +33,7 @@ class StoreCard extends Component {
       backgroundRepeat: "no-repeat"
     };
 
-    const cardLink = `/city/amsterdam/store/${this.props.index}`
+    const cardLink = `/city/amsterdam/store/${this.props._id}`
 
     return(
       <div className="card">
