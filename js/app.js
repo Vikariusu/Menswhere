@@ -32,7 +32,7 @@ class App extends Component {
   render(){
     return (
       <div className="application-wrapper">
-        <Navbar />
+        <Navbar city={this.props.match.params.cityName}/>
         <StoreList
           stores={this.state.stores}
           likesCount={this.state.likesCount}

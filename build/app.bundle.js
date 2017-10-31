@@ -1124,6 +1124,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1136,31 +1138,61 @@ __webpack_require__(61);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Navbar = function Navbar() {
-  return _react2.default.createElement(
-    'div',
-    { className: 'navbar-top' },
-    _react2.default.createElement(
-      'div',
-      { className: 'logo' },
-      'Menswhere'
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'navbar-links' },
-      _react2.default.createElement(
-        'a',
-        { href: '/about' },
-        'About'
-      ),
-      _react2.default.createElement(
-        'a',
-        { href: '/contact' },
-        'Contact'
-      )
-    )
-  );
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Navbar = function (_Component) {
+  _inherits(Navbar, _Component);
+
+  function Navbar() {
+    _classCallCheck(this, Navbar);
+
+    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
+  }
+
+  _createClass(Navbar, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'navbar-top' },
+        _react2.default.createElement(
+          'div',
+          { className: 'logo' },
+          _react2.default.createElement(
+            'a',
+            { href: '/city/' + this.props.city },
+            'Menswhere',
+            _react2.default.createElement(
+              'span',
+              { className: 'city-logo' },
+              this.props.city
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'navbar-links' },
+          _react2.default.createElement(
+            'a',
+            { href: '/about' },
+            'About'
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: '/contact' },
+            'Contact'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Navbar;
+}(_react.Component);
 
 exports.default = Navbar;
 
@@ -4992,7 +5024,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'application-wrapper' },
-        _react2.default.createElement(_navbar2.default, null),
+        _react2.default.createElement(_navbar2.default, { city: this.props.match.params.cityName }),
         _react2.default.createElement(_storeList2.default, {
           stores: this.state.stores,
           likesCount: this.state.likesCount,
@@ -11803,7 +11835,7 @@ var StoreCard = function (_Component) {
     };
 
     _this.state = {
-      likesCount: 0,
+      likesCount: _this.props.likes,
       liked: false,
       likedClass: 'fa fa-heart-o'
     };
@@ -11814,7 +11846,7 @@ var StoreCard = function (_Component) {
     key: 'render',
     value: function render() {
       var cover = {
-        backgroundImage: 'url(' + this.props.image + ')',
+        backgroundImage: 'url(' + this.props.imgUrl + ')',
         height: "200px",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -11870,7 +11902,7 @@ var StoreCard = function (_Component) {
                 'div',
                 { className: 'comments' },
                 _react2.default.createElement('i', { className: 'fa fa-comment-o', 'aria-hidden': 'true' }),
-                ' comments'
+                ' 0'
               )
             )
           )
@@ -11924,7 +11956,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n  min-width: 240px;\n  flex: 1 1 320px;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n  margin-top: 8px;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n\n.likes i {\n  color: red;\n}\n", ""]);
+exports.push([module.i, ".card {\n  width: 30%;\n  margin: 1%;\n  /*flex: 1 1 30%;*/\n  position: relative;\n  border: 1px solid #efefef;\n  border-radius: 2px;\n  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);\n  transition: all .3s ease;\n  min-width: 240px;\n  flex: 1 1 320px;\n}\n\n.card a {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card a:visited {\n  text-decoration: inherit;\n  color: inherit;\n  cursor: auto;\n}\n\n.card-content {\n  padding: 30px 30px 110px;\n}\n\n.card-content h2, .card-content h5 {\n  line-height: 1.2;\n  color: #444444;\n  margin-top: 8px;\n}\n\n.card-social {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n}\n\n.card-social-inner {\n  display: flex;\n  /*justify-content: space-between;*/\n  align-items: center;\n  border-top: 1px solid #efefef;\n  margin: 0 30px;\n  padding: 30px 0;\n}\n\n.desc {\n  margin: 5px 0 15px;\n  line-height: 1.6;\n  color: #666666;\n}\n\n.card-img-wrapper {\n  height: 50%;\n}\n\n.card img {\n  width: 100%;\n}\n\n.likes i {\n  color: red;\n}\n\n.likes {\n  padding-right: 10px;\n}\n", ""]);
 
 // exports
 
@@ -12109,7 +12141,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #44505d;\n  align-items: center;\n  height: 65px;\n  justify-content: space-between;\n  margin-bottom: 20px;\n  align-items: center;\n}\n\n.logo {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  padding-left: 15px;\n}\n\n.navbar-links {\n  padding-right: 15px;\n  color: #44505d;\n}\n\n.navbar-links a {\n  padding: 10px;\n  text-decoration: inherit;\n  cursor: auto;\n  color: #f6f7f7;\n}\n\n.navbar-links a:visited {\n  text-decoration: inherit;\n  color: #f6f7f7;\n  cursor: auto;\n}\n", ""]);
+exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #44505d;\n  align-items: center;\n  height: 65px;\n  justify-content: space-between;\n  margin-bottom: 20px;\n  align-items: center;\n}\n\n.logo {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  padding-left: 15px;\n  position: relative;\n}\n\n.logo a:nth-child(1){\n  letter-spacing: 1.3px;\n  font-size: 1.25rem;\n}\n\n.city-logo {\n  font-size: 0.87rem;\n  position: absolute;\n  bottom: -4px;\n}\n\n.logo a {\n  text-decoration:none;\n  color: #f6f7f7;\n}\n\n.logo a:hover {\n  text-decoration:none;\n  color: #f6f7f7;\n}\n\n.navbar-links {\n  padding-right: 15px;\n  color: #44505d;\n}\n\n.navbar-links a {\n  padding: 10px;\n  text-decoration: inherit;\n  cursor: auto;\n  color: #f6f7f7;\n}\n\n.navbar-links a:visited {\n  text-decoration: inherit;\n  color: #f6f7f7;\n  cursor: auto;\n}\n", ""]);
 
 // exports
 
@@ -12197,7 +12229,7 @@ var HomePage = function HomePage() {
       'I\'m looking for menswear in',
       _react2.default.createElement(
         'div',
-        { className: 'dropdown', style: { display: 'inline-block' } },
+        { className: 'dropdown toggle-cities', style: { display: 'inline-block' } },
         _react2.default.createElement(
           'button',
           { className: 'btn btn-secondary dropdown-toggle', id: 'dropdownMenuButton', 'data-toggle': 'dropdown', 'aria-haspopup': 'true' },
@@ -12213,7 +12245,7 @@ var HomePage = function HomePage() {
           ),
           _react2.default.createElement(
             'a',
-            { className: 'dropdown-item', href: '/city/London' },
+            { className: 'dropdown-item disabled', href: '' },
             'London'
           )
         )
@@ -12264,7 +12296,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".banner-wrapper {\n  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 50%), url(\"https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?dpr=1&auto=format&fit=crop&w=1500&h=&q=60&cs=tinysrgb&crop=\");\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.logo-home {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  font-size: 56px;\n  padding: 15px;\n  letter-spacing: 1.9px;\n}\n\n.banner-content {\n  color: #e9ecec;\n  font-size: 25px;\n}\n", ""]);
+exports.push([module.i, ".banner-wrapper {\n  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 50%), url(\"https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?dpr=1&auto=format&fit=crop&w=1500&h=&q=60&cs=tinysrgb&crop=\");\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  background-size: cover;\n}\n\n.logo-home {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  font-size: 56px;\n  padding: 15px;\n  letter-spacing: 2.3px;\n}\n\n.banner-content {\n  color: #e9ecec;\n  text-shadow: 0 1px 2px rgba(0,0,0,0.33);\n  font-size: 25px;\n}\n\n.toggle-cities {\n  padding: 0 17px;\n}\n", ""]);
 
 // exports
 
@@ -12344,12 +12376,12 @@ var StoreView = function (_Component) {
   _createClass(StoreView, [{
     key: 'render',
     value: function render() {
-      console.log(this.props.match.params.storeId);
+      // console.log(this.props.match.params.cityName);
 
       return _react2.default.createElement(
         'div',
         { className: 'storeview-wrapper' },
-        _react2.default.createElement(_navbar2.default, null),
+        _react2.default.createElement(_navbar2.default, { city: this.props.match.params.cityName }),
         _react2.default.createElement(
           'div',
           { className: 'storeview-content' },
@@ -12358,8 +12390,8 @@ var StoreView = function (_Component) {
             { className: 'comments-wrapper' },
             _react2.default.createElement(
               'div',
-              null,
-              '[ GALLERY ]'
+              { className: 'img-view' },
+              _react2.default.createElement('img', { src: this.state.imgUrl })
             ),
             _react2.default.createElement(
               'div',
@@ -12445,7 +12477,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".storeview-wrapper {\n  background-color: white !important;\n}\n\n.storeview-content {\n  display: flex;\n  justify-content: space-around;\n}\n\n.store-data-wrapper {\n  flex: 0 0 50%;\n  /*display: flex;\n  flex-direction: column;\n  justify-content: flex-end;*/\n}\n", ""]);
+exports.push([module.i, ".storeview-wrapper {\n  background-color: white !important;\n}\n\n.storeview-content {\n  display: flex;\n  justify-content: space-around;\n}\n\n.store-data-wrapper {\n  flex: 0 1 50%;\n  padding: 0 40px;\n}\n\n.img-view img {\n  max-height: 50vh;\n}\n\n.store-navigation {\n  text-decoration:none;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  color: #444444;\n  padding-left: 22px;\n}\n\n.store-navigation:hover {\n  text-decoration:none;\n}\n", ""]);
 
 // exports
 

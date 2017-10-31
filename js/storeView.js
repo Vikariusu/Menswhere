@@ -30,14 +30,15 @@ class StoreView extends Component {
   }
 
   render(){
-    console.log(this.props.match.params.storeId);
+    // console.log(this.props.match.params.cityName);
 
     return (
       <div className="storeview-wrapper">
-        <Navbar />
+        <Navbar city={this.props.match.params.cityName}/>
+        {/* <a href={`/city/${this.props.match.params.cityName}`} className="store-navigation">Back</a> */}
         <div className="storeview-content">
-            <div className="comments-wrapper">
-            <div>[ GALLERY ]</div>
+          <div className="comments-wrapper">
+            <div className="img-view"><img src={this.state.imgUrl} /></div>
             <div>[ COMMENTS ]</div>
           </div>
           <div className="store-data-wrapper">

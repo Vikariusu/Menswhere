@@ -12,6 +12,28 @@
   color: #f6f7f7;
   text-transform: uppercase;
   padding-left: 15px;
+  position: relative;
+}
+
+.logo a:nth-child(1){
+  letter-spacing: 1.3px;
+  font-size: 1.25rem;
+}
+
+.city-logo {
+  font-size: 0.87rem;
+  position: absolute;
+  bottom: -4px;
+}
+
+.logo a {
+  text-decoration:none;
+  color: #f6f7f7;
+}
+
+.logo a:hover {
+  text-decoration:none;
+  color: #f6f7f7;
 }
 
 .navbar-links {

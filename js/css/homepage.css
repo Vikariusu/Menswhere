@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-size: cover;
 }
 
 .logo-home {
@@ -12,10 +13,15 @@
   text-transform: uppercase;
   font-size: 56px;
   padding: 15px;
-  letter-spacing: 1.9px;
+  letter-spacing: 2.3px;
 }
 
 .banner-content {
   color: #e9ecec;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.33);
   font-size: 25px;
+}
+
+.toggle-cities {
+  padding: 0 17px;
 }

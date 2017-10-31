@@ -6,7 +6,7 @@ class StoreCard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      likesCount: 0,
+      likesCount: this.props.likes,
       liked: false,
       likedClass: 'fa fa-heart-o'
     }
@@ -26,7 +26,7 @@ class StoreCard extends Component {
 
   render(){
     var cover = {
-      backgroundImage: `url(${this.props.image})`,
+      backgroundImage: `url(${this.props.imgUrl})`,
       height: "200px",
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -52,7 +52,7 @@ class StoreCard extends Component {
                 <i className={this.state.likedClass} aria-hidden="true" onClick={this.toggleLike}></i> {this.state.likesCount}
               </div>
               <div className="comments">
-                <i className="fa fa-comment-o" aria-hidden="true"></i> comments
+                <i className="fa fa-comment-o" aria-hidden="true"></i> 0
               </div>
             </div>
           </div>
