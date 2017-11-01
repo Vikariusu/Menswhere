@@ -1,0 +1,10 @@
+.store-list {
+  display: flex;
+  flex-wrap: wrap;
+  /*justify-content: space-between;*/
+  /*align-items: stretch;*/
+}
+
+.store-list:last-child {
+  float: left;
+}

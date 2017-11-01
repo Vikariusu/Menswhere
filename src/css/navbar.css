@@ -1,0 +1,55 @@
+.navbar-top {
+  display: flex;
+  background-color: #44505d;
+  align-items: center;
+  height: 65px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.logo {
+  color: #f6f7f7;
+  text-transform: uppercase;
+  padding-left: 15px;
+  position: relative;
+}
+
+.logo a:nth-child(1){
+  letter-spacing: 1.3px;
+  font-size: 1.25rem;
+}
+
+.city-logo {
+  font-size: 0.87rem;
+  position: absolute;
+  bottom: -4px;
+}
+
+.logo a {
+  text-decoration:none;
+  color: #f6f7f7;
+}
+
+.logo a:hover {
+  text-decoration:none;
+  color: #f6f7f7;
+}
+
+.navbar-links {
+  padding-right: 15px;
+  color: #44505d;
+}
+
+.navbar-links a {
+  padding: 10px;
+  text-decoration: inherit;
+  cursor: auto;
+  color: #f6f7f7;
+}
+
+.navbar-links a:visited {
+  text-decoration: inherit;
+  color: #f6f7f7;
+  cursor: auto;
+}

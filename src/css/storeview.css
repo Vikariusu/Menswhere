@@ -1,0 +1,29 @@
+.storeview-wrapper {
+  background-color: white !important;
+}
+
+.storeview-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.store-data-wrapper {
+  flex: 0 1 50%;
+  padding: 0 40px;
+}
+
+.img-view img {
+  max-height: 50vh;
+}
+
+.store-navigation {
+  text-decoration:none;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  color: #444444;
+  padding-left: 22px;
+}
+
+.store-navigation:hover {
+  text-decoration:none;
+}
