@@ -1,1 +1,17 @@
-Where is the menswear?
+# Menswhere
+https://menswhere-bqhejvmatk.now.sh/
+
+A directory connecting menswhere enthusiasts with local brands. Allows users to browse by city and view a list of stores on a responsive website.
+
+#### Functionality
+* Dynamic routing using React Router
+* Responsive design built with flexbox
+* Built with Webpack and Babel
+* Gets store data from an Express-built API that can be found [here](https://github.com/Vikariusu/Menswhere-API)
+* Hosted on ΔNow
+
+#### To do:
+* User login and sign up
+* Comment functionality
+* Google maps integration
+* Geolocation
