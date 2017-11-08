@@ -9,9 +9,9 @@ A directory connecting menswhere enthusiasts with local brands. Allows users to 
 * Built with Webpack and Babel
 * Gets store data from an Express-built API that can be found [here](https://github.com/Vikariusu/Menswhere-API)
 * Hosted on ΔNow
+* Google maps integration
 
 #### To do:
 * User login and sign up
 * Comment functionality
-* Google maps integration
 * Geolocation
