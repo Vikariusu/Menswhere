@@ -1,4 +1,5 @@
 .store-list {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   /*justify-content: space-between;*/
@@ -7,4 +8,56 @@
 
 .store-list:last-child {
   float: left;
+}
+
+/* spinner */
+.loading {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.loading p {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.circle {
+  margin: 6px;
+  width: 11px;
+  height: 11px;
+  background-color: #637388;
+  border-radius: 50%;
+/*   animation: bouncing 1.2s ease-in-out infinite; */
+}
+
+.circles {
+  display: flex;
+}
+
+.circle:nth-child(1) {
+  animation: bouncing 0.6s ease-in-out 0s infinite;
+}
+
+.circle:nth-child(2) {
+  animation: bouncing 0.6s ease-in-out 0.14s infinite;
+}
+
+.circle:nth-child(3) {
+  animation: bouncing 0.6s ease-in-out 0.28s infinite;
+}
+
+@keyframes bouncing {
+  0%{
+    transform: scale(1) translateY(0);
+  }
+  50%{
+    transform: scale(1.1) translateY(22px);
+  }
+  100%{
+    transform: scale(1) translateY(0px);
+  }
 }

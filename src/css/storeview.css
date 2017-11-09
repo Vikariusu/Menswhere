@@ -17,7 +17,7 @@
 }
 
 .store-navigation {
-  text-decoration:none;
+  text-decoration: none;
   margin-bottom: 20px;
   padding-bottom: 20px;
   color: #444444;
@@ -25,7 +25,7 @@
 }
 
 .store-navigation:hover {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 #map {

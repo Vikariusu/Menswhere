@@ -15,7 +15,7 @@
   position: relative;
 }
 
-.logo a:nth-child(1){
+.logo a:nth-child(1) {
   letter-spacing: 1.3px;
   font-size: 1.25rem;
 }
@@ -27,12 +27,12 @@
 }
 
 .logo a {
-  text-decoration:none;
+  text-decoration: none;
   color: #f6f7f7;
 }
 
 .logo a:hover {
-  text-decoration:none;
+  text-decoration: none;
   color: #f6f7f7;
 }
 

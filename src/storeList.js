@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StoreCard from './storeCard.js';
+import StoreCard from './storeCard';
 import './css/storeList.css';
+import Loader from './loader';
 
 class StoreList extends Component {
   renderStores = () => {
     const stores = this.props.stores;
-
     return stores.map((store, storeIndex) => {
       return(
         <StoreCard
@@ -14,16 +14,20 @@ class StoreList extends Component {
           index={storeIndex}
           handleLikesChange={this.props.handleLikesChange}
         />
-      )
-    })
+      );
+    });
   }
 
   render(){
-    return (
-      <div className="store-list">
-        {this.renderStores()}
-      </div>
-    );
+    if(this.props.stores.length === 0) {
+      return <Loader/>;
+    } else {
+      return (
+        <div className="store-list">
+          {this.renderStores()}
+        </div>
+      );
+    }
   }
 }
 
