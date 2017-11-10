@@ -39,9 +39,11 @@ class StoreCard extends Component {
         <div className="card-content">
           <a href={cardLink}>
             <div className="card-top">
-              <div className="card-img-wrapper" style={cover}></div>
+              <div className="card-img-wrapper">
+                <div className="card-img" style={cover}></div>
+              </div>
               <h2>{this.props.name}</h2>
-              <p>{this.props.address}</p>
+              <p className="address-wrapper">{this.props.address}</p>
               <p className="desc">{this.props.description}</p>
             </div>
           </a>

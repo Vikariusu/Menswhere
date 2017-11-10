@@ -11,15 +11,21 @@
 .logo-home {
   color: #f6f7f7;
   text-transform: uppercase;
-  font-size: 56px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+  font-size: 2.8rem;
   padding: 15px;
-  letter-spacing: 2.3px;
+  letter-spacing: 2.5px;
+  padding-bottom: 40px;
+  font-family: 'Lora', serif;
+
 }
 
 .banner-content {
   color: #e9ecec;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
-  font-size: 25px;
+  /*text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);*/
+  font-size: 23px;
+  font-Family: 'Muli', Sans-Serif;
+
 }
 
 .toggle-cities {
