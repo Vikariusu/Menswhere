@@ -1116,7 +1116,7 @@ var Navbar = function (_Component) {
       if (_this.props.city !== undefined) {
         return _react2.default.createElement(
           'div',
-          null,
+          { className: 'city-wrapper' },
           _react2.default.createElement(
             'a',
             { href: '/city/' + _this.props.city },
@@ -1156,11 +1156,6 @@ var Navbar = function (_Component) {
             'a',
             { href: '/about' },
             'About'
-          ),
-          _react2.default.createElement(
-            'a',
-            { href: '/contact' },
-            'Contact'
           )
         )
       );
@@ -5505,7 +5500,7 @@ exports = module.exports = __webpack_require__(7)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #44505d;\n  align-items: center;\n  height: 65px;\n  justify-content: space-between;\n  margin-bottom: 20px;\n  align-items: center;\n}\n\n.logo {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  padding-left: 15px;\n  position: relative;\n}\n\n.logo a:nth-child(1) {\n  letter-spacing: 1.3px;\n  font-size: 1.25rem;\n}\n\n.city-logo {\n  font-size: 0.87rem;\n  position: absolute;\n  bottom: -4px;\n}\n\n.logo a {\n  text-decoration: none;\n  color: #f6f7f7;\n}\n\n.logo a:hover {\n  text-decoration: none;\n  color: #f6f7f7;\n}\n\n.navbar-links {\n  padding-right: 15px;\n  color: #44505d;\n}\n\n.navbar-links a {\n  padding: 10px;\n  text-decoration: inherit;\n  cursor: auto;\n  color: #f6f7f7;\n}\n\n.navbar-links a:visited {\n  text-decoration: inherit;\n  color: #f6f7f7;\n  cursor: auto;\n}\n", ""]);
+exports.push([module.i, ".navbar-top {\n  display: flex;\n  background-color: #44505d;\n  align-items: center;\n  height: 65px;\n  justify-content: space-between;\n  margin-bottom: 20px;\n  align-items: center;\n}\n\n.logo {\n  color: #f6f7f7;\n  text-transform: uppercase;\n  padding-left: 15px;\n  position: relative;\n}\n\n.logo a:nth-child(1) {\n  letter-spacing: 1.3px;\n  font-size: 1.25rem;\n}\n\n.city-logo {\n  font-size: 0.87rem;\n  position: absolute;\n  bottom: -4px;\n}\n\n.logo a {\n  text-decoration: none;\n  color: #f6f7f7;\n}\n\n.logo a:hover {\n  text-decoration: none;\n  color: #f6f7f7;\n}\n\n.navbar-links {\n  padding-right: 15px;\n  color: #44505d;\n}\n\n.navbar-links a {\n  padding: 10px;\n  text-decoration: inherit;\n  cursor: auto;\n  color: #f6f7f7;\n}\n\n.navbar-links a:visited {\n  text-decoration: inherit;\n  color: #f6f7f7;\n  cursor: auto;\n}\n\n/* responsiveness */\n@media (max-width: 412px) {\n  .logo a:nth-child(1) {\n    font-size: 1rem;\n  }\n\n  .city-logo {\n    display: none;\n    position: absolute;\n    height: 0;\n    width: 0;\n  }\n\n  .city-wrapper {\n    position: relative;\n  }\n\n  .navbar-links {\n    padding: 0;\n    margin: 0;\n  }\n}\n", ""]);
 
 // exports
 
@@ -6142,6 +6137,8 @@ var _navbar = __webpack_require__(10);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
+__webpack_require__(429);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var About = function About() {
@@ -6149,7 +6146,26 @@ var About = function About() {
     'div',
     null,
     _react2.default.createElement(_navbar2.default, null),
-    'This is about page.'
+    _react2.default.createElement(
+      'div',
+      { className: 'about-wrapper' },
+      _react2.default.createElement(
+        'p',
+        null,
+        'Menswhere is a project started in 2017 with one goal: to connect menswear enthusiasts with local brands.'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Your store is not here? Send us an ',
+        _react2.default.createElement(
+          'a',
+          { href: 'mailto:veratomaszewska@gmail.com', target: '_top' },
+          'email'
+        ),
+        '!'
+      )
+    )
   );
 };
 
@@ -31829,6 +31845,51 @@ exports.default = BicyclingLayer;
 var eventMap = {};
 
 var updaterMap = {};
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(430);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./about.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./about.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".about-wrapper {\n  padding: 10px 15px;\n  height: 70vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

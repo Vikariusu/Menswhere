@@ -5,9 +5,10 @@ class Navbar extends Component{
   displayCity = () => {
     if(this.props.city !== undefined){
       return (
-        <div>
+        <div className="city-wrapper">
           <a href={`/city/${this.props.city}`}>Menswhere
-          <span className="city-logo">{this.props.city}</span></a>
+            <span className="city-logo">{this.props.city}</span>
+          </a>
         </div>
       )
     } else {
@@ -27,11 +28,9 @@ class Navbar extends Component{
         </div>
         <div className="navbar-links">
           <a href="/about">About</a>
-          <a href="/contact">Contact</a>
         </div>
       </div>
     )
-
   }
 }
 

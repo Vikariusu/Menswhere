@@ -1,5 +1,5 @@
 # Menswhere
-https://menswhere-bqhejvmatk.now.sh/
+https://menswhere.xyz/
 
 A directory connecting menswhere enthusiasts with local brands. Allows users to browse by city and view a list of stores on a responsive website.
 

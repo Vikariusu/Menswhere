@@ -53,3 +53,26 @@
   color: #f6f7f7;
   cursor: auto;
 }
+
+/* responsiveness */
+@media (max-width: 412px) {
+  .logo a:nth-child(1) {
+    font-size: 1rem;
+  }
+
+  .city-logo {
+    display: none;
+    position: absolute;
+    height: 0;
+    width: 0;
+  }
+
+  .city-wrapper {
+    position: relative;
+  }
+
+  .navbar-links {
+    padding: 0;
+    margin: 0;
+  }
+}
