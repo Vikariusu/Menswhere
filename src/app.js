@@ -27,10 +27,35 @@ class App extends Component {
     }
   }
 
+  sortStoresLikes = () => {
+    let sortedStores = this.state.stores.concat().sort(function(firstStore, secondStore) {
+      if(firstStore.likes > secondStore.likes){
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    this.setState({stores: sortedStores});
+  }
+
+  sortStoresNames = () => {
+    let sortedStores = this.state.stores.concat().sort(function(a, b) {
+      let storeA = a.name.toLowerCase(), storeB = b.name.toLowerCase();
+
+      if(storeA > storeB){
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    this.setState({stores: sortedStores});
+  }
+
   render(){
     return (
       <div className="application-wrapper">
         <Navbar city={this.props.match.params.cityName}/>
+        <div class="sort-options">Sort by: <span onClick={this.sortStoresLikes}>likes</span> | <span onClick={this.sortStoresNames}>name</span></div>
         <StoreList
           stores={this.state.stores}
           likesCount={this.state.likesCount}

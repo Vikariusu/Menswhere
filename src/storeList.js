@@ -28,6 +28,7 @@ class StoreList extends Component {
 
   renderStores = () => {
     const stores = this.props.stores;
+
     return stores.map((store, storeIndex) => {
       return(
         <StoreCard
@@ -47,8 +48,10 @@ class StoreList extends Component {
       return <Loader/>;
     } else {
       return (
-        <div className="store-list" style={{width: width, marginLeft: marginLeft}}>
-          {this.renderStores()}
+        <div>
+          <div className="store-list" style={{width: width, marginLeft: marginLeft}}>
+            {this.renderStores()}
+          </div>
         </div>
       );
     }
