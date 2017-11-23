@@ -17,17 +17,85 @@
   letter-spacing: 2.5px;
   padding-bottom: 40px;
   font-family: 'Lora', serif;
-
 }
 
 .banner-content {
   color: #e9ecec;
-  /*text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);*/
   font-size: 23px;
   font-Family: 'Muli', Sans-Serif;
-
 }
 
 .toggle-cities {
   padding: 0 17px;
+}
+
+@media only screen and (max-width: 330px){
+  .logo-home {
+    font-size: 2rem;
+  }
+
+  .banner-content {
+    font-size: 1.4rem;
+  }
+
+  .dropdown-toggle, .dropdown-menu, .dropdown-menu a {
+    font-size: 1rem;
+  }
+
+  .banner-wrapper {
+    text-align: center;
+  }
+
+  .dropdown-menu {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .banner-wrapper {
+      height: 100vh;
+  }
+
+  .logo-home {
+    font-size: 2rem;
+  }
+
+  .banner-content {
+    font-size: 1.3rem;
+  }
+
+  .dropdown-toggle, .dropdown-menu, .dropdown-menu a {
+    font-size: 1.1rem;
+  }
+
+  .dropdown-menu {
+    min-width: 0;
+    line-height: 0.4;
+  }
+
+  .dropdown-toggle {
+    padding: 0.4rem 0.7rem;
+  }
+
+  .dropdown-item {
+    padding: 0.8rem 0.7rem;
+  }
+
+  .banner-wrapper {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px) {
+  .banner-wrapper {
+    height: 100vh;
+  }
+
+  .logo-home {
+    font-size: 3rem;
+  }
+
+  .banner-content, .dropdown-toggle, .dropdown-menu, .dropdown-menu a {
+    font-size: 1.9rem;
+  }
 }
