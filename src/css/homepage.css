@@ -85,17 +85,3 @@
     text-align: center;
   }
 }
-
-@media only screen and (min-width: 480px) and (max-width: 1024px) {
-  .banner-wrapper {
-    height: 100vh;
-  }
-
-  .logo-home {
-    font-size: 3rem;
-  }
-
-  .banner-content, .dropdown-toggle, .dropdown-menu, .dropdown-menu a {
-    font-size: 1.9rem;
-  }
-}
