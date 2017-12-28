@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/navbar.css';
+import SearchBar from './SearchBar';
 
 class Navbar extends Component{
   displayCity = () => {
@@ -26,6 +27,7 @@ class Navbar extends Component{
           {/* <a href={`/city/${this.props.city}`}>Menswhere
           <span className="city-logo">{this.props.city}</span></a> */}
         </div>
+        <SearchBar />
         <div className="navbar-links">
           <a href="/about">About</a>
         </div>
