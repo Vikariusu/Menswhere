@@ -5,6 +5,11 @@
   margin-right: 40px;
 }
 
+.filter-options h6{
+  color: #565656;
+  font-weight: bolder;
+}
+
 .filter-option {
   margin-bottom: 20px;
 }
@@ -18,6 +23,19 @@ i.gray {
   color: #e8e8e8;
 }
 
+.filter-style-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .filter-style-option {
   padding: 2px;
+  border: none;
+  text-align: left;
+  color: #565656;
+  cursor: pointer;
+}
+
+.filter-style-option:focus {
+  outline: none;
 }

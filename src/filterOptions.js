@@ -32,11 +32,13 @@ class FilterOptions extends React.Component {
         <div className="filter-option">
           {/* <button onClick={this.filterOptions}>Filter style</button> */}
           <h6>Style</h6>
-          <div className="filter-style-option" onClick={this.filterOptions}>Casual</div>
-          <div className="filter-style-option" onClick={this.filterOptions}>Workwear</div>
-          <div className="filter-style-option" onClick={this.filterOptions}>Vintage</div>
-          <div className="filter-style-option" onClick={this.filterOptions}>Formal</div>
-          <div className="filter-style-option" onClick={this.filterOptions}>Streetwear</div>
+          <div className="filter-style-wrapper">
+            <button className="filter-style-option" onClick={this.filterOptions}>Casual</button>
+            <button className="filter-style-option" onClick={this.filterOptions}>Workwear</button>
+            <button className="filter-style-option" onClick={this.filterOptions}>Vintage</button>
+            <button className="filter-style-option" onClick={this.filterOptions}>Formal</button>
+            <button className="filter-style-option" onClick={this.filterOptions}>Streetwear</button>
+          </div>
         </div>
       </div>
     )
