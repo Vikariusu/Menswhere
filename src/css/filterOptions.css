@@ -1,7 +1,8 @@
 .filter-options {
-  min-width: 9vh;
+  min-width: 10vh;
   /* background-color: #e8e8e8; */
-  padding: 20px 10px 0 20px;
+  padding: 20px 0 0 20px;
+  margin-right: 40px;
 }
 
 .filter-option {
@@ -15,4 +16,8 @@
 
 i.gray {
   color: #e8e8e8;
+}
+
+.filter-style-option {
+  padding: 2px;
 }

@@ -2,6 +2,12 @@ import React from 'react';
 import './css/filterOptions.css';
 
 class FilterOptions extends React.Component {
+  filterOptions = (event) => {
+    const query = event.target.innerHTML.toLowerCase();
+    console.log(query);
+    this.props.changeFilterOption(query);
+  }
+
   render() {
     return (
       <div className="filter-options">
@@ -24,12 +30,13 @@ class FilterOptions extends React.Component {
           </div>
         </div>
         <div className="filter-option">
+          {/* <button onClick={this.filterOptions}>Filter style</button> */}
           <h6>Style</h6>
-          <div>Casual</div>
-          <div>Workwear</div>
-          <div>Vintage</div>
-          <div>Formal</div>
-          <div>Streetwear</div>
+          <div className="filter-style-option" onClick={this.filterOptions}>Casual</div>
+          <div className="filter-style-option" onClick={this.filterOptions}>Workwear</div>
+          <div className="filter-style-option" onClick={this.filterOptions}>Vintage</div>
+          <div className="filter-style-option" onClick={this.filterOptions}>Formal</div>
+          <div className="filter-style-option" onClick={this.filterOptions}>Streetwear</div>
         </div>
       </div>
     )

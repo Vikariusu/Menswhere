@@ -26,8 +26,11 @@ class StoreList extends Component {
     this.setState({width: componentWidth });
   }
 
+  // returns jsx of the stores to display
   renderStores = () => {
-    const storesToDisplay = this.filterStoresbySearchTerm();
+    let storesToDisplay = this.filterStoresbySearchTerm(this.props.stores);
+    storesToDisplay = this.filterStoresbyType(storesToDisplay);
+
 
     return storesToDisplay.map((store, storeIndex) => {
       return(
@@ -41,10 +44,8 @@ class StoreList extends Component {
     });
   }
 
-  filterStoresbySearchTerm = () => {
-    const stores = this.props.stores;
+  filterStoresbySearchTerm = (stores) => {
     let searchResults = [];
-    console.log(this.props.searchTerm);
     stores.forEach(store => {
       if(store.name.indexOf(this.props.searchTerm) !== -1){
         searchResults.push(store);
@@ -52,6 +53,32 @@ class StoreList extends Component {
     })
 
     return searchResults;
+  }
+
+  // display stores after filtering by style, price etc.
+  filterStoresbyType = (stores) => {
+    // stores.filter((store) => {
+    //   if(store.style){
+    //   return store.style[0] === this.props.filterOption;
+    //   }
+    // })
+
+    let filteredResults = stores.filter((store) => {
+      if(!store.style && this.props.filterTerm) {
+        return false;
+      }
+
+      if(!this.props.filterTerm) {
+        return true;
+      }
+
+      if(store.style){
+        return store.style[0] === this.props.filterTerm;
+      }
+
+    })
+
+    return filteredResults;
   }
 
   render(){

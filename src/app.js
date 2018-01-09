@@ -11,7 +11,8 @@ class App extends Component {
 
     this.state = {
       stores: [],
-      searchTerm: ""
+      searchTerm: "",
+      filterTerm: ""
       // likesCount: 0,
       // commentsCount: 0
     }
@@ -68,19 +69,31 @@ class App extends Component {
     this.setState({stores: sortedStores});
   }
 
+  changeFilterOption = (query) => {
+    this.setState({filterTerm: query});
+
+    // let sortedStores = this.state.stores.concat().filter(function(store) {
+    //   if(store.style){
+    //     return store.style[0] === query;
+    //   }
+    // })
+  }
+
   render(){
     return (
       <div className="application-wrapper">
         <Navbar city={this.props.match.params.cityName} searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm} />
         <div className="sort-options">Sort by: <span onClick={this.sortStoresLikes}>likes</span> | <span onClick={this.sortStoresNames}>name</span></div>
         <div className="stores-wrapper">
-          <FilterOptions />
+          <FilterOptions changeFilterOption={this.changeFilterOption}/>
           <StoreList
             stores={this.state.stores}
             likesCount={this.state.likesCount}
             handleLikesChange={this.handleLikesChange}
             searchTerm={this.state.searchTerm}
+            filterTerm={this.state.filterTerm}
           />
+          {/* <button onClick={this.filterFromOptions}>Filter</button> */}
         </div>
       </div>
     );
