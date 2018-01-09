@@ -27,9 +27,9 @@ class StoreList extends Component {
   }
 
   renderStores = () => {
-    const stores = this.props.stores;
+    const storesToDisplay = this.filterStoresbySearchTerm();
 
-    return stores.map((store, storeIndex) => {
+    return storesToDisplay.map((store, storeIndex) => {
       return(
         <StoreCard
           key={store._id}
@@ -41,6 +41,19 @@ class StoreList extends Component {
     });
   }
 
+  filterStoresbySearchTerm = () => {
+    const stores = this.props.stores;
+    let searchResults = [];
+    console.log(this.props.searchTerm);
+    stores.forEach(store => {
+      if(store.name.indexOf(this.props.searchTerm) !== -1){
+        searchResults.push(store);
+      }
+    })
+
+    return searchResults;
+  }
+
   render(){
     const width = this.state.width;
     const marginLeft = (window.innerWidth - width)/2 - 10;
@@ -49,7 +62,8 @@ class StoreList extends Component {
     } else {
       return (
         <div>
-          <div className="store-list" style={{width: width, marginLeft: marginLeft}}>
+          {/* style={{width: width, marginLeft: marginLeft}} */}
+          <div className="store-list">
             {this.renderStores()}
           </div>
         </div>

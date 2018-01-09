@@ -12,13 +12,12 @@
 .card a {
   text-decoration: inherit;
   color: inherit;
-  cursor: auto;
+  cursor: pointer;
 }
 
 .card a:visited {
   text-decoration: inherit;
   color: inherit;
-  cursor: auto;
 }
 
 .card-top h2 {

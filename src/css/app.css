@@ -1,3 +1,7 @@
+.stores-wrapper {
+  display: flex;
+}
+
 .application-wrapper {
   background-color: white;
 }

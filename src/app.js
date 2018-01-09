@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import StoreList from './storeList.js';
 import Navbar from './navbar.js';
+import FilterOptions from './filterOptions.js';
+// import SearchBar from './SearchBar';
 import './css/app.css';
 
 class App extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      stores: [],
+      searchTerm: ""
+      // likesCount: 0,
+      // commentsCount: 0
+    }
 
     var request = new XMLHttpRequest();
     request.open('GET', "https://menswhere-api-ygrswjptqh.now.sh/api/stores", true);
@@ -19,12 +28,20 @@ class App extends Component {
         console.log("There was an error getting data");
       }
     };
+  }
 
-    this.state = {
-      stores: []
-      // likesCount: 0,
-      // commentsCount: 0
-    }
+  changeSearchTerm = (input) => {
+    // change search term coming from the searchbar
+    this.setState({ searchTerm: input });
+
+    // sort by searchTerm
+    // let Searchedstores = this.state.stores.forEach((store) => {
+    //   if(store.name.indexOf(input) === -1){
+    //     return stores;
+    //   } else {
+    //
+    //   }
+    // })
   }
 
   sortStoresLikes = () => {
@@ -54,13 +71,17 @@ class App extends Component {
   render(){
     return (
       <div className="application-wrapper">
-        <Navbar city={this.props.match.params.cityName}/>
-        <div class="sort-options">Sort by: <span onClick={this.sortStoresLikes}>likes</span> | <span onClick={this.sortStoresNames}>name</span></div>
-        <StoreList
-          stores={this.state.stores}
-          likesCount={this.state.likesCount}
-          handleLikesChange={this.handleLikesChange}
-        />
+        <Navbar city={this.props.match.params.cityName} searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm} />
+        <div className="sort-options">Sort by: <span onClick={this.sortStoresLikes}>likes</span> | <span onClick={this.sortStoresNames}>name</span></div>
+        <div className="stores-wrapper">
+          <FilterOptions />
+          <StoreList
+            stores={this.state.stores}
+            likesCount={this.state.likesCount}
+            handleLikesChange={this.handleLikesChange}
+            searchTerm={this.state.searchTerm}
+          />
+        </div>
       </div>
     );
   }
