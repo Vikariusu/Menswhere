@@ -1,6 +1,7 @@
 .store-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .store-list:last-child {

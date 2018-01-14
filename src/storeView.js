@@ -66,6 +66,7 @@ class StoreView extends Component {
             <div className="store-data">
               <h2>{this.state.name}</h2>
               <p>{this.state.address}</p>
+              <p><a href={this.state.url} target="_blank" >{this.state.url}</a></p>
               <p>{this.state.description}</p>
             </div>
             <div id="map">
